@@ -11,6 +11,7 @@ let headY=10;
 
 function drawGame(){
     clearScreen();
+    drawSnake();
     setTimeout(drawGame, 1000/speed);
 
 }
@@ -20,4 +21,10 @@ function clearScreen(){
     context.fillRect(0,0,canvas.clientWidth,canvas.height);
 }
 
-    drawGame();
+function drawSnake(){
+    context.fillStyle = '#f76300'
+    context.fillRect(headX*tileCount,headY*tileCount, tileSize,tileSize)
+    
+}
+
+drawGame();
