@@ -17,8 +17,10 @@ let VelY = 0;
 
 
 function drawGame(){
+    
     clearScreen();
     changeSnakeposition();
+    checkApplecollision();
     drawApple();
     drawSnake();
     setTimeout(drawGame, 1000/speed);
@@ -50,6 +52,13 @@ function drawApple(){
     context.fillStyle = "red";
     context.fillRect(appleX*tileCount,appleY*tileCount,tileSize,tileSize);
     
+}
+
+function checkApplecollision(){
+    if (appleX == headX && appleY == headY){
+        appleX = Math.floor(Math.random()*tileCount);
+        appleY = Math.floor(Math.random()*tileCount);
+    }
 }
 
 
