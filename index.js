@@ -44,6 +44,12 @@ function drawGame(){
     drawApple();
     drawSnake();
     drawScore();
+    if (score>2){
+        speed =11;
+    }
+    if  (score >5){
+        speed =17;
+    }
     setTimeout(drawGame, 1000/speed);
 
 }
