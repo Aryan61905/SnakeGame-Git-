@@ -24,6 +24,7 @@ let appleY=5;
 let VelX = 0;
 let VelY = 0;
 
+let score=0;
 
 
 
@@ -34,8 +35,14 @@ function drawGame(){
     checkApplecollision();
     drawApple();
     drawSnake();
+    drawScore();
     setTimeout(drawGame, 1000/speed);
 
+}
+function drawScore(){
+    context.fillStyle="white";
+    context.font = "10px Verdana"
+    context.fillText("SCORE => "+score, canvas.width-80,13);
 }
 
 function clearScreen(){
@@ -61,7 +68,7 @@ function drawSnake(){
 
 
 
-    if(snakeParts.length>tailLength){
+    while(snakeParts.length>tailLength){
         snakeParts.shift();
     }
     
@@ -82,6 +89,7 @@ function checkApplecollision(){
         appleX = Math.floor(Math.random()*tileCount);
         appleY = Math.floor(Math.random()*tileCount);
         tailLength++
+        score++
     }
 }
 
