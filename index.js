@@ -45,21 +45,31 @@ document.body.addEventListener('keydown',keyDown);
 
 function keyDown(event){
     if(event.keyCode == 38){//up
+        if (VelY == 1){
+            return
+        }
+
         VelY = -1;
         VelX = 0;
 
     }
     if(event.keyCode == 40){//down
+        if (VelY == -1){
+            return}
         VelY = 1;
         VelX = 0;
 
     }
     if(event.keyCode == 37){//left
+        if (VelX == 1){
+            return}
         VelY = 0;
         VelX = -1;
 
     }
     if(event.keyCode == 39){//right
+        if (VelX == -1){
+            return}
         VelY = 0;
         VelX = 1;
 
