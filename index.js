@@ -29,9 +29,17 @@ let score=0;
 
 
 function drawGame(){
+    changeSnakeposition();
+
+    let result = isGameOver();
+    if(result){
+        return;
+    }
+    
+    
     
     clearScreen();
-    changeSnakeposition();
+    
     checkApplecollision();
     drawApple();
     drawSnake();
@@ -39,6 +47,37 @@ function drawGame(){
     setTimeout(drawGame, 1000/speed);
 
 }
+
+
+
+function isGameOver(){
+    let gameover =false;
+    if(VelX===0 && VelY===0){
+        return false;
+    }
+
+    if (headX<0 || headY<0 || headY>=tileCount || headX>=tileCount){
+        gameover =true;
+    }
+    for (let i=0;i<snakeParts.length;i++){
+        let part =snakeParts[i];
+        if(part.x === headX && part.y ===headY){
+            gameover =true;
+            break;
+        }
+    }
+    if (gameover){
+        context.fillStyle = "red";
+        context.font = "50px Verdana";
+        context.fillText("GAME OVER!!",canvas.width/10,canvas.height/2);
+    }
+    return gameover;
+
+
+
+}
+
+
 function drawScore(){
     context.fillStyle="white";
     context.font = "10px Verdana"
@@ -47,7 +86,7 @@ function drawScore(){
 
 function clearScreen(){
     context.fillStyle='#4699f2';
-    context.fillRect(0,0,canvas.clientWidth,canvas.height);
+    context.fillRect(0,0,canvas.width,canvas.height);
 }
 
 
@@ -68,7 +107,7 @@ function drawSnake(){
 
 
 
-    while(snakeParts.length>tailLength){
+    if(snakeParts.length>tailLength){
         snakeParts.shift();
     }
     
