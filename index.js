@@ -7,15 +7,19 @@ let tileCount=20;
 let tileSize = canvas.width/ tileCount -2;
 let headX =10;
 let headY=10;
+let appleX=5;
+let appleY=5;
 
 let VelX = 0;
 let VelY = 0;
 
 
 
+
 function drawGame(){
     clearScreen();
     changeSnakeposition();
+    drawApple();
     drawSnake();
     setTimeout(drawGame, 1000/speed);
 
@@ -35,9 +39,17 @@ function drawSnake(){
 }
 
 
+
+
 function changeSnakeposition(){
     headX = headX + VelX;
     headY = headY + VelY;
+}
+
+function drawApple(){
+    context.fillStyle = "red";
+    context.fillRect(appleX*tileCount,appleY*tileCount,tileSize,tileSize);
+    
 }
 
 
